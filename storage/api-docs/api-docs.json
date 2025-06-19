@@ -1,0 +1,124 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Tareas",
+        "description": "Documentación de la API de tareas",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/todos": {
+            "get": {
+                "summary": "Obtener todos los TODOs",
+                "operationId": "dd687d49d7f86d473ce56a7806776fc4",
+                "responses": {
+                    "200": {
+                        "description": "Lista de tareas"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear un nuevo TODO",
+                "operationId": "6f5da079c2dace66df52625276205a32",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Título de la tarea",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Descripción de la tarea",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Tarea creada exitosamente"
+                    }
+                }
+            }
+        },
+        "/api/todos/{id}": {
+            "get": {
+                "summary": "Obtener un TODO específico",
+                "operationId": "5ee0e89cdc77f538ae94769b0b5cfae1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tarea",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarea obtenida exitosamente"
+                    },
+                    "404": {
+                        "description": "Tarea no encontrada"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualizar un TODO específico",
+                "operationId": "0e5cec090fe772f5dcb769dd9e38717c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tarea",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Título de la tarea",
+                        "required": false
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Descripción de la tarea",
+                        "required": false
+                    },
+                    {
+                        "name": "completed",
+                        "in": "query",
+                        "description": "Estado de la tarea",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarea actualizada exitosamente"
+                    },
+                    "404": {
+                        "description": "Tarea no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Eliminar un TODO específico",
+                "operationId": "2f51ac0f120b8a6c7a8092bbd18174f4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tarea",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarea eliminada exitosamente"
+                    },
+                    "404": {
+                        "description": "Tarea no encontrada"
+                    }
+                }
+            }
+        }
+    }
+}

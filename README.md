@@ -1,61 +1,256 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Todo API - Laravel 12
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Una API RESTful moderna construida con Laravel 12 para gestión de tareas (todos), con documentación interactiva Swagger y arquitectura escalable.
 
-## About Laravel
+## 🚀 Características
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **API RESTful completa** con operaciones CRUD
+- **Laravel 12** - La última versión del framework
+- **Documentación interactiva** con Swagger/OpenAPI
+- **Validación robusta** de datos de entrada
+- **Manejo de errores** estructurado
+- **Respuestas JSON** consistentes
+- **Arquitectura limpia** siguiendo las mejores prácticas de Laravel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Requisitos del Sistema
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.2
+- Composer
+- MySQL/PostgreSQL/SQLite
 
-## Learning Laravel
+## 🛠️ Instalación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clonar el repositorio
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/tu-usuario/todo-api-laravel.git
+cd todo-api-laravel
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Instalar dependencias
 
-## Laravel Sponsors
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+### 3. Configurar base de datos
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Edita el archivo `.env` con tus credenciales de base de datos:
 
-## Contributing
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=todo_api
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_password
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Ejecutar migraciones
 
-## Code of Conduct
+```bash
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Publicar configuración de Swagger (opcional)
 
-## Security Vulnerabilities
+```bash
+php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6. Iniciar el servidor
 
-## License
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+La aplicación estará disponible en `http://127.0.0.1:8000`
+
+## 📚 Documentación de la API
+
+### Swagger UI
+Accede a la documentación interactiva en: `http://127.0.0.1:8000/api/documentation`
+
+### Endpoints Disponibles
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/todos` | Obtener todos los todos |
+| POST | `/api/todos` | Crear un nuevo todo |
+| GET | `/api/todos/{id}` | Obtener un todo específico |
+| PUT | `/api/todos/{id}` | Actualizar un todo completo |
+| PATCH | `/api/todos/{id}` | Actualizar parcialmente un todo |
+| DELETE | `/api/todos/{id}` | Eliminar un todo |
+
+### Estructura de Datos
+
+#### Todo Object
+```json
+{
+  "id": 1,
+  "title": "Completar el proyecto",
+  "description": "Finalizar la API de todos con Laravel 12",
+  "completed": false,
+  "created_at": "2025-06-18T10:30:00.000000Z",
+  "updated_at": "2025-06-18T10:30:00.000000Z"
+}
+```
+
+## 🔧 Uso de la API
+
+### Crear un Todo
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/todos \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "title": "Mi nueva tarea",
+    "description": "Descripción de la tarea"
+  }'
+```
+
+### Obtener todos los Todos
+
+```bash
+curl -X GET http://127.0.0.1:8000/api/todos \
+  -H "Accept: application/json"
+```
+
+### Actualizar un Todo
+
+```bash
+curl -X PUT http://127.0.0.1:8000/api/todos/1 \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "title": "Tarea actualizada",
+    "completed": true
+  }'
+```
+
+### Eliminar un Todo
+
+```bash
+curl -X DELETE http://127.0.0.1:8000/api/todos/1 \
+  -H "Accept: application/json"
+```
+
+## ⚙️ Configuración
+
+### Variables de Entorno
+
+```env
+# Aplicación
+APP_NAME="Todo API"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+# Base de Datos
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=todolistapp
+DB_USERNAME=root
+DB_PASSWORD=tu_contra
+
+# Swagger
+L5_SWAGGER_GENERATE_ALWAYS=true
+SWAGGER_VERSION=3.0.0
+```
+
+## 🧪 Testing
+
+### Ejecutar tests
+
+```bash
+# Todos los tests
+php artisan test
+
+# Tests específicos
+php artisan test --filter TodoControllerTest
+```
+
+### Ejemplos con Postman
+
+1. Importa la colección desde `/docs/postman_collection.json`
+2. Configura la variable de entorno `base_url` como `http://127.0.0.1:8000`
+3. Ejecuta las pruebas automáticamente
+
+## 🔍 Validaciones
+
+### Crear Todo
+- `title`: Requerido, string, máximo 255 caracteres
+- `description`: Opcional, string, máximo 1000 caracteres
+
+### Actualizar Todo
+- `title`: Opcional, string, máximo 255 caracteres
+- `description`: Opcional, string, máximo 1000 caracteres
+- `completed`: Opcional, boolean
+
+## 🚨 Manejo de Errores
+
+La API devuelve errores en formato JSON estructurado:
+
+```json
+{
+  "error": "Descripción del error",
+  "message": "Mensaje detallado",
+  "status": 400
+}
+```
+
+### Códigos de Estado HTTP
+
+- `200` - OK
+- `201` - Creado exitosamente
+- `400` - Solicitud incorrecta
+- `404` - Recurso no encontrado
+- `422` - Errores de validación
+- `500` - Error interno del servidor
+
+## 🏗️ Arquitectura
+
+```
+app/
+├── Http/
+│   └── Controllers/
+│       └── TodoController.php
+├── Models/
+│   └── Todo.php
+└── ...
+
+routes/
+├── api.php
+└── web.php
+
+database/
+├── migrations/
+└── seeders/
+```
+
+## 📝 Convenciones de Código
+
+- Seguir PSR-12 para estilo de código PHP
+- Usar nombres descriptivos para variables y métodos
+- Documentar métodos públicos con PHPDoc
+- Escribir tests para nuevas funcionalidades
+
+
+## 📞 Soporte
+
+- Documentación: `http://127.0.0.1:8000/api/documentation`
+
+---
+
+⭐ Si este proyecto te fue útil, ¡no olvides darle una estrella en GitHub!
+
+## 🔄 Changelog
+
+### v1.0.0 (2025-06-18)
+- ✨ API RESTful completa para gestión de todos
+- 📚 Documentación Swagger integrada
+- 🔧 Validaciones robustas
+- 🚀 Arquitectura escalable con Laravel 12

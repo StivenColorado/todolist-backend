@@ -3,7 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-
-// Elimina la línea de TodoController de aquí ya que va en api.php

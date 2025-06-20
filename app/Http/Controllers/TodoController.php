@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use OpenApi\Annotations as OA; //swagger doc
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 
 /**
@@ -166,7 +167,7 @@ class TodoController extends Controller
     {
         try {
             // Log para debugging
-            \Log::info('PUT/PATCH request received', [
+            Log::info('PUT/PATCH request received', [
                 'id' => $id,
                 'request_data' => $request->all(),
                 'method' => $request->method()
@@ -192,7 +193,7 @@ class TodoController extends Controller
 
             return response()->json($todo);
         } catch (\Exception $e) {
-            \Log::error('Error in update method', [
+            Log::error('Error in update method', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);
